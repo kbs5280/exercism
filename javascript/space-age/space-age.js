@@ -3,7 +3,7 @@ function SpaceAge(seconds) {
 };
 
 SpaceAge.prototype.onEarth = function() {
-  return Math.round((3.169e-8 * this.seconds) * 100) / 100;
+  return truncateFloat(3.169e-8 * this.seconds);
 };
 
 SpaceAge.prototype.onMercury = function() {
@@ -12,6 +12,14 @@ SpaceAge.prototype.onMercury = function() {
 
 SpaceAge.prototype.onVenus = function() {
   return (5.151711150867197e-8 * this.seconds);
+};
+
+SpaceAge.prototype.onMars = function() {
+  return truncateFloat(1.6846424533248636e-8  * this.seconds);
+};
+
+function truncateFloat(result) {
+  return Math.round((result) * 100) / 100;
 };
 
 module.exports = SpaceAge;
